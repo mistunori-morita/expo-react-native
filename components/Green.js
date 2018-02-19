@@ -7,11 +7,11 @@ import {
   StyleSheet,
 } from 'react-native';
 
-export default class Superman extends Component {
+export default class Green extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>I am Superman</Text>
+        <Text>Writehere</Text>
       </View>
     );
   }
@@ -19,6 +19,8 @@ export default class Superman extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    width: 100,
+    height: 100,
+    backgroundColor: 'green',
   },
 });
