@@ -158,3 +158,10 @@ const styles = StyleSheet.create({
 
 
 ```
+
+## FlexBoxのおさらい
+- ネイティブの場合ちょっと挙動違う
+- `alignItems: 'center',` 横軸
+- `justifyContent: 'center',`　縦軸
+- この辺ウェブに慣れていると注意かも！
+- 軸の方向性だけ違うのでそれ以外のcss命令は変わらん印象
