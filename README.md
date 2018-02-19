@@ -91,3 +91,70 @@
 
 //展開は[rnc+tabキー]
 ```
+
+## React-nativeのスタイルのルールのおさらい
+- 普通のwebの話だとコンポーネント単位で考えてないので、複数のsassやらで管理するが、nativeの場合はコンポーネント単位なので、スタイルもコンポーネント単位で行うのが一般的
+
+
+## Componentのおさらい
+- expoで行なっても`create-react-native-app`の時と何もかわらない（expoで作るほうが余計なものがはいってないが、、、）
+
+- project/components/component名
+```js
+/* rnc+tabキー展開 */
+
+import React, { Component } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+} from 'react-native';
+
+// コンポーネント名に変更
+export default class Superman extends Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text>I am Superman</Text>
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
+
+
+app.jsで読み込み
+
+// importする
+import Superman from './components/Superman';
+
+export default class App extends React.Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text>I am a Component</Text>
+        //ここでコンポーネント読み込み
+        <Superman />
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    //これで上から見えるようにしている
+    marginTop: 50,
+  },
+});
+
+
+```
