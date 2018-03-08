@@ -133,7 +133,7 @@ app.jsで読み込み
 // importする
 import Superman from './components/Superman';
 
-export default class App extends React.Component {
+export default class App extends React.ComponXent {
   render() {
     return (
       <View style={styles.container}>
@@ -165,3 +165,63 @@ const styles = StyleSheet.create({
 - `justifyContent: 'center',`　縦軸
 - この辺ウェブに慣れていると注意かも！
 - 軸の方向性だけ違うのでそれ以外のcss命令は変わらん印象
+
+
+## ScrollViewについて
+```js
+//app.jsに読み込み
+import Horizontal from './components/Horizontal';
+
+export default class App extends React.Component {
+  render() {
+    return (
+      <View style={styles.container}>
+      //今回はこれをscroolviewコンポーネントで作る
+        <Horizontal />
+      </View>
+    );
+  }
+}
+```
+- components/Horizontal.jsを作成
+```js
+//rnc + tabキーで展開
+
+/* @flow */
+
+import React, { Component } from 'react';
+import {
+  View,
+  Text,
+  //まずインポートでscrollviewを使えるようにする
+  ScrollView,
+  StyleSheet,
+} from 'react-native';
+
+export default class Horizontal extends Component {
+  render() {
+    return (
+      //ScrollViewでラップして、その中にViewでラップ
+      <ScrollView style={styles.container}>
+        <View style={styles.outer}>
+          <Text style={styles.innerText}>Welcome to with app</Text>
+        </View>
+      </ScrollView>
+    );
+  }
+}
+
+//スタイルを使うときはstyles.xxxで作成して下に追記
+const styles = StyleSheet.create({
+  container: {
+
+  },
+  outer: {
+
+  },
+  innerText{
+
+  },
+});
+//これがまず雛形
+```

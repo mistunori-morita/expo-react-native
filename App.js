@@ -1,16 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import Red from './components/Red'
-import Blue from './components/Blue'
-import Green from './components/Green'
+import Horizontal from './components/Horizontal';
+
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Red />
-        <Blue />
-        <Green />
+        <Horizontal />
       </View>
     );
   }
@@ -20,7 +17,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    // alignItems: 'center',
+    alignItems: 'center',
     justifyContent: 'center',
     marginTop: 50,
   },
