@@ -219,9 +219,84 @@ const styles = StyleSheet.create({
   outer: {
 
   },
-  innerText{
+  //手グセでよくカンマ忘れるので注意
+  innerText: {
 
   },
 });
 //これがまず雛形
+```
+
+### Expo起動しないとき
+- 'npm i'で一旦切り替えるか、文面間違い注意
+- 個人的にスタイルのところの:忘れやすい
+
+## Dimensions
+- Dimensionsは画面の高さとか幅を調べることができるやつ
+- `width: Dimensions.get('window').width,`で幅
+- `height: Dimensions.get('window').height,`で高さ
+- この二つをやると画面いっぱいに広がる
+- この状態で<ScrollView>に<View>を複数おくと、画面いっぱいのものが広がりながらスクロールできる
+
+```js
+<ScrollView style={styles.container}>
+//ここが一つの領域
+  <View style={styles.outer}>
+    <Text style={styles.innerText}>Welcome to with app</Text>
+  </View>
+  //ここが一つの領域
+  <View style={styles.outer}>
+    <Text style={styles.innerText}>Welcome to with app</Text>
+  </View>
+  //ここが一つの領域
+  <View style={styles.outer}>
+    <Text style={styles.innerText}>Welcome to with app</Text>
+  </View>
+</ScrollView>
+
+//styles
+const styles = StyleSheet.create({
+  container: {
+
+  },
+  outer: {
+    backgroundColor: '#f00',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    //ここが今回のDimensionsのポイント
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
+  },
+  innerText: {
+    color: '#fff',
+    fontSize: 23,
+    fontWeight: 'bold'
+  }
+});
+
+```
+
+### ScrollViewを横軸に動かす
+- `<ScrollView horizontal={true} style={styles.container}>`
+- ここで`horizontal={true} `をつければ横軸
+- `pagingEnabled={true}`をするとページングでその画面でページングできるようになる ※綴り間違い注意！
+
+## styleを重ねる際
+- 今回のようにスタイルを少しだけ変えたいという場合箱の方法で行う
+- `<View style={[styles.outer, styles.pink]}>`
+- `{[styles.outer, styles.pink]}`このようにしてstyles.pinkの部分だけスタイルをつける
+```js
+outer: {
+  backgroundColor: '#f00',
+  flex: 1,
+  alignItems: 'center',
+  justifyContent: 'center',
+  width: Dimensions.get('window').width,
+  height: Dimensions.get('window').height,
+},
+pink: {
+  backgroundColor: 'pink',
+},
+//こんな感じでやる
 ```
